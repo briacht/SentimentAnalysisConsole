@@ -7,7 +7,6 @@ namespace SentimentAnalysisConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             // 1. Create new ML.NET Environment
             var mlContext = new MLContext();
 
@@ -35,9 +34,9 @@ namespace SentimentAnalysisConsole
 
             // 7. Save trained model
             Console.WriteLine("Saving model...");
-            mlContext.Model.Save(trainedModel, trainingData.Schema, "../model.zip");
+            mlContext.Model.Save(trainedModel, trainingData.Schema, "../../../model.zip");
 
-            // 7. Use model to make prediction
+            // 8. Use model to make prediction
             ModelInput input = new ModelInput { Comment = "I love this movie!" };
 
             var predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(trainedModel);
