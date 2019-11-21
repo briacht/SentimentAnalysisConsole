@@ -13,11 +13,11 @@ namespace SentimentAnalysisConsole
             // 2. Load data
             IDataView trainingData = mlContext.Data.LoadFromTextFile<ModelInput>("yelp_train.txt", hasHeader:true, separatorChar:'\t');
 
-            // 3. Transform data
-            var dataProcessPipeline = mlContext.Transforms.Text.FeaturizeText(outputColumnName: "Features", inputColumnName: nameof(ModelInput.Comment));
+            // 3. Add data transformations
+            var dataProcessPipeline = mlContext.Transforms.Text. FeaturizeText(outputColumnName: "Features", inputColumnName: nameof(ModelInput.Comment));
 
             // 4. Add algorithm
-            var trainer = mlContext.BinaryClassification.Trainers.SdcaLogisticRegression(labelColumnName: "Sentiment", featureColumnName: "Features");
+            var trainer = mlContext.BinaryClassification.Trainers. SdcaLogisticRegression(labelColumnName: "Sentiment", featureColumnName: "Features");
             var trainingPipeline = dataProcessPipeline.Append(trainer);
 
             Console.WriteLine("Training model...");
