@@ -13,7 +13,7 @@ namespace SentimentAnalysisConsole
             // 2. Load data
             IDataView trainingData = mlContext.Data.LoadFromTextFile<ModelInput>("yelp_train.txt", hasHeader:true, separatorChar:'\t');
 
-            // 3. Transform data
+            // 3. Add data transformations
             var dataProcessPipeline = mlContext.Transforms.Text.FeaturizeText(outputColumnName: "Features", inputColumnName: nameof(ModelInput.Comment));
 
             // 4. Add algorithm
